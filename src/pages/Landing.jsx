@@ -1,13 +1,11 @@
 import MainLayout from "../layouts/MainLayout";
 
+import Hero from "../features/landing/Hero";
+
 export default function Landing() {
   return (
     <MainLayout>
-      <main className="flex min-h-screen items-center justify-center">
-        <h1 className="text-6xl font-bold">
-          AI Resume Analyzer
-        </h1>
-      </main>
+      <Hero />
     </MainLayout>
   );
 }
