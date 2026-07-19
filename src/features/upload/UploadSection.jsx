@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useResume } from "../../context/ResumeContext";
+import { analyzeResume } from "../../services/analysisService";
 import Container from "../../components/common/Container";
 
 import UploadHeader from "./components/UploadHeader";
@@ -13,7 +14,12 @@ import useFileUpload from "./hooks/useFileUpload";
 
 export default function UploadSection() {
   const navigate = useNavigate();
-
+  const {
+    setResumeFile,
+    setAnalysis,
+    history,
+    setHistory,
+  } = useResume();
   const {
     file,
     error,
@@ -23,17 +29,39 @@ export default function UploadSection() {
 
   const [loading, setLoading] = useState(false);
 
-  const onAnalyze = async () => {
+const onAnalyze = async () => {
     if (!file) return;
 
     setLoading(true);
 
-    // Temporary
-    setTimeout(() => {
-      setLoading(false);
-      navigate("/dashboard");
-    }, 1800);
-  };
+    setResumeFile(file);
+
+   const result = await analyzeResume(file);
+
+setResumeFile(file);
+
+setAnalysis(result);
+
+setHistory((prev) => [
+  {
+    id: Date.now(),
+
+    name: file.name,
+
+    date: new Date().toLocaleString(),
+
+    atsScore: result.atsScore,
+
+    analysis: result,
+  },
+
+  ...prev,
+]);
+
+setLoading(false);
+
+navigate("/dashboard");
+};
 
   return (
     <section className="py-24">

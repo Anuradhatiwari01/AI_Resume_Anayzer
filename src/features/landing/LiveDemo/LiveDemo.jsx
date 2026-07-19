@@ -7,7 +7,7 @@ import ResultPreview from "./ResultPreview";
 
 export default function LiveDemo() {
   return (
-    <section className="py-28">
+    <section id="live-demo" className="py-28">
       <Container>
         <SectionTitle
           title="See ResumeLens AI in Action"

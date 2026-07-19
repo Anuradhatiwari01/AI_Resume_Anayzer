@@ -1,19 +1,24 @@
+import { Link } from "react-router-dom";
 import Button from "../../../components/common/Button";
 
 export default function HeroButtons() {
   return (
     <div className="mt-10 flex flex-wrap gap-4">
 
-      <Button className="px-8">
-        Upload Resume
-      </Button>
+      <Link to="/upload">
+        <Button className="px-8">
+          Upload Resume
+        </Button>
+      </Link>
 
-      <Button
-        variant="outline"
-        className="px-8"
-      >
-        View Demo
-      </Button>
+      <a href="#live-demo">
+        <Button
+          variant="outline"
+          className="px-8"
+        >
+          View Demo
+        </Button>
+      </a>
 
     </div>
   );

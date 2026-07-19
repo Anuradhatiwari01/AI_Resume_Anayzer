@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import Container from "./Container";
 import Logo from "./Logo";
@@ -22,9 +23,11 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
 
-            <Button className="hidden md:block">
-              Get Started
-            </Button>
+            <Link to="/upload">
+              <Button className="hidden md:block">
+                Get Started
+              </Button>
+            </Link>
 
             <button
               className="md:hidden"
