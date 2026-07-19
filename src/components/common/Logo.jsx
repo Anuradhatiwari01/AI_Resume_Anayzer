@@ -9,7 +9,7 @@ export default function Logo() {
 
       <div>
         <h1 className="font-bold text-lg">
-          ResumeAI
+          ResumeLens AI
         </h1>
 
         <p className="text-xs text-zinc-400">
